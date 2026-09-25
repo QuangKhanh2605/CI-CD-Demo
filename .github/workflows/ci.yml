@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x build.sh test.sh ci.sh
+
+      - name: Run CI
+        run: ./ci.sh
